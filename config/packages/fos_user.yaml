@@ -1,15 +1,15 @@
 fos_user:
     registration:
         confirmation:
-            enabled: true
+            enabled: false
     db_driver: orm
     user_class: App\Entity\User
     firewall_name: main
     from_email:
-        address: foo
-        sender_name: bar
+        address: andre.mendesc@gmail.com
+        sender_name: André Mendes
     resetting:
         email:
             from_email:
-                address:        resetting@example.com
-                sender_name:    Demo Resetting
+                address:        andre.mendesc@gmail.com
+                sender_name:    André Mendes
