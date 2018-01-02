@@ -1,5 +1,7 @@
 easy_admin:
   site_name: 'Desafio Marketplace'
+  design:
+    form_theme: 'vertical'
   entities:
     Product:
       class: App\Entity\Product    
@@ -35,7 +37,7 @@ easy_admin:
               - enabled
               - bankAccount
               - transferEnabled
-              - transferInterval
+              - { property: 'transferInterval', type: 'choice', type_options: { multiple: false, choices: { 'Diariamente': 'daily', 'Semanalmente': 'weekly', 'Mensalmente' : 'monthly' } } }
               - transferDay
               - automaticAnticipationEnabled
               - anticipatableVolumePercentage

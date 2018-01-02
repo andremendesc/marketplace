@@ -22,7 +22,7 @@ class User extends BaseUser
     /**
      * @var BankAccount
      * @ORM\OneToOne(targetEntity="BankAccount")
-     * @ORM\JoinColumn(name="bank_account", referencedColumnName="id")
+     * @ORM\JoinColumn(name="bank_account", referencedColumnName="id", nullable=true)
      */
     protected $bankAccount;
 
@@ -101,33 +101,104 @@ class User extends BaseUser
         return $this->bankAccount;
     }
 
+    /**
+     * Get transferEnabled
+     *
+     * @return boolean
+     */
     public function getTransferEnabled()
     {
         return $this->transferEnabled;
+    }
+
+    /**
+     * Set transferEnabled
+     * @param boolean
+     * @return User
+     */
+    public function setTransferEnabled($value)
+    {
+        $this->transferEnabled = $value;
+        return $this;
     }
     
     public function getLastTransfer()
     {
         return $this->lastTransfer;
     }
+
+    /**
+     * Set lastTransfer
+     * @param string
+     * @return User
+     */
+    public function setLastTransfer($value)
+    {
+        $this->lastTransfer = $value;
+        return $this;
+    }
     
     public function getTransferInterval()
     {
         return $this->transferInterval;
+    }
+
+    /**
+     * Set transferInterval
+     * @param string
+     * @return User
+     */
+    public function setTransferInterval($value)
+    {
+        $this->transferInterval = $value;
+        return $this;
     }
     
     public function getTransferDay()
     {
         return $this->transferDay;
     }
+
+    /**
+     * Set transferDay
+     * @param int
+     * @return User
+     */
+    public function setTransferDay($value)
+    {
+        $this->transferDay = $value;
+        return $this;
+    }
     
     public function getAutomaticAnticipationEnabled()
     {
         return $this->automaticAnticipationEnabled;
     }
+
+    /**
+     * Set automaticAnticipationEnabled
+     * @param boolean
+     * @return User
+     */
+    public function setAutomaticAnticipationEnabled($value)
+    {
+        $this->automaticAnticipationEnabled = $value;
+        return $this;
+    }
     
     public function getAnticipatableVolumePercentage()
     {
         return $this->anticipatableVolumePercentage;
+    }
+
+    /**
+     * Set anticipatableVolumePercentage
+     * @param int
+     * @return User
+     */
+    public function setAnticipatableVolumePercentage($value)
+    {
+        $this->anticipatableVolumePercentage = $value;
+        return $this;
     }
 }
