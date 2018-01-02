@@ -5,8 +5,9 @@ namespace App\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 
-class DashboardController extends Controller
+class DashboardController extends BaseAdminController
 {
     /**
      * @Route("/dashboard", name="dashboard")
@@ -14,7 +15,6 @@ class DashboardController extends Controller
     public function admin()
     {
         $session = $this->get('session');
-        dump($session);
         return new Response('<html><body>Admin page! <a href="/logout">sair</a> </body></html>');
     }
 
@@ -24,6 +24,21 @@ class DashboardController extends Controller
     public function index()
     {
         return new Response('<html><body>Landing Page! <br> <a href="/admin">Área de Administração</a> </body></html>');
+    }
+
+    public function createNewUserEntity()
+    {
+        return $this->get('fos_user.user_manager')->createUser();
+    }
+
+    public function prePersistUserEntity($user)
+    {
+        $this->get('fos_user.user_manager')->updateUser($user, false);
+    }
+
+    public function preUpdateUserEntity($user)
+    {
+        $this->get('fos_user.user_manager')->updateUser($user, false);
     }
 }
 
