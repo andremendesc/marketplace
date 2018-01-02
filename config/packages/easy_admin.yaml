@@ -24,25 +24,56 @@ easy_admin:
     User:
       class: App\Entity\User
       list:
+        title: 'Contas de Usuários'
+        actions:
+          - { name: 'edit', label: 'Editar', icon: 'pencil'  }
+          - { name: 'delete', label: 'Remover', icon: 'remove'  }
         fields:
-            - username
-            - email
-            - enabled
-            - lastLogin
-            - roles
+            - { property: 'username', label: 'Usuário' }
+            - { property: 'email', label: 'E-mail' }
+            - { property: 'enabled', label: 'Habilitado ?' }
+            - { property: 'lastLogin', label: 'Último Login' }
+            - { property: 'roles', label: 'Acesso ao sistema' }
       form:
-          fields:
-              - username
-              - email
-              - enabled
-              - bankAccount
-              - transferEnabled
-              - { property: 'transferInterval', type: 'choice', type_options: { multiple: false, choices: { 'Diariamente': 'daily', 'Semanalmente': 'weekly', 'Mensalmente' : 'monthly' } } }
-              - transferDay
-              - automaticAnticipationEnabled
-              - anticipatableVolumePercentage
-              - { property: 'plainPassword', type: 'text', type_options: { required: false } }
-              - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'Regular user': 'ROLE_USER', 'Administrator': 'ROLE_ADMIN' } } }
-
+        fields:
+            - { type: 'group', css_class: 'col-sm-6', label: 'Conta Marketplace' }
+            - { property: 'username', label: 'Usuário' }
+            - { property: 'plainPassword', type: 'text', type_options: { required: false }, label: 'Senha pura (descriptografada)' }
+            - { property: 'email', label: 'E-mail' }
+            - { property: 'enabled', label: 'Habilitado ?' }
+            - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'Regular user': 'ROLE_USER', 'Administrator': 'ROLE_ADMIN' } }, label: 'Acesso ao sistema' }
+            - { type: 'group', css_class: 'col-sm-6', label: 'Informações Bancárias' }
+            - { property: 'bankAccount', label: 'Conta Bancária' }
+            - { property: 'transferEnabled', label: 'Receber valores automaticamente?' }
+            - { property: 'transferInterval', type: 'choice', type_options: { multiple: false, choices: { 'Diariamente': 'daily', 'Semanalmente': 'weekly', 'Mensalmente' : 'monthly' } }, label: 'Frequência para recebimento automático' }
+            - { property: 'transferDay', label: 'Dia para transferência automática' }
+            - { property: 'automaticAnticipationEnabled', label: 'Adiantamento automático habilitado?' }
+            - { property: 'anticipatableVolumePercentage', label: 'Limite para adiantamento automático (em %)' }
     BankAccount:
       class:  App\Entity\BankAccount
+      list:
+        title: 'Conta Bancária'
+        fields:
+          - { property: 'legalName', label: 'Nome | Razão social' }
+          - { property: 'bankCode', label: 'Código do banco' }
+          - { property: 'conta', label: 'Número da conta' }
+          - { property: 'agencia', label: 'Agência' }
+          - { property: 'documentNumber', label: 'RG|CPF|CNPJ' }
+          - { property: 'type', label: 'Tipo de conta' }
+        actions:
+          - { name: 'edit', label: 'Editar', icon: 'pencil'  }
+          - { name: 'delete', label: 'Remover', icon: 'remove'  }
+      form:
+        title: 'Conta Bancária'
+        fields:
+          - { type: 'group', css_class: 'col-sm-6', label: 'Informações Bancárias' }
+          - { property: 'bankCode', label: 'Código do banco' }
+          - { property: 'conta', label: 'Número da conta bancária' }
+          - { property: 'contaDv', label: 'Dígito validador da conta bancária' }
+          - { property: 'agencia', label: 'Agência' }
+          - { property: 'agenciaDv', label: 'Dígito validador da agência' }
+          - { type: 'group', css_class: 'col-sm-6', label: 'Documentação' }
+          - { property: 'documentType', type: 'choice', type_options: { multiple: false, choices: { 'CPF': 'cpf', 'RG': 'rg', 'CNPJ' : 'cnpj' } }, label: 'Tipo de documento do titular da conta' }
+          - { property: 'documentNumber', label: 'RG|CPF|CNPJ do titular da conta' }
+          - { property: 'legalName', label: 'Nome completo | Razão social' }
+          - { property: 'type', type: 'choice', type_options: { multiple: false, choices: { 'Conta corrente': 'conta_corrente', 'Poupança': 'conta_poupanca', 'Conta corrente conjunta' : 'conta_corrente_conjunta', 'Conta poupança conjunta' : 'conta_poupanca_conjunta' } }, label: 'Tipo de conta bancária' }
