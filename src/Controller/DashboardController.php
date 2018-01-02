@@ -23,7 +23,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return new Response('<html><body>Landing Page! <br> <a href="/dashboard">Área de Administração</a> </body></html>');
+        return new Response('<html><body>Landing Page! <br> <a href="/admin">Área de Administração</a> </body></html>');
     }
 }
 
