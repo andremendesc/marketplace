@@ -4,10 +4,13 @@ easy_admin:
     form_theme: 'vertical'
     color_scheme: 'dark'
     menu:
-      - { entity: 'User', icon: 'user-circle-o', label: 'Contas de Usuário' }
-      - { entity: 'Product', icon: 'shopping-cart', label: 'Produtos da loja' }
-      - { label: 'Finanças', icon: 'money' }
-      - { entity: 'BankAccount', icon: 'bank', label: 'Contas Bancárias' }
+      - label: 'Loja'
+        children:
+          - { entity: 'User', icon: 'user-circle-o', label: 'Contas de Usuário' }
+          - { entity: 'Product', icon: 'shopping-cart', label: 'Produtos' }
+      - label: 'Finanças'
+        children:
+          - { entity: 'BankAccount', icon: 'bank', label: 'Contas Bancárias' }
   entities:
     Product:
       class: App\Entity\Product    
