@@ -2,6 +2,11 @@ easy_admin:
   site_name: 'Desafio Marketplace'
   design:
     form_theme: 'vertical'
+    color_scheme: 'dark'
+    menu:
+      - { entity: 'User', icon: 'user-circle-o', label: 'Contas de Usuário' }
+      - { entity: 'Product', icon: 'shopping-cart', label: 'Produtos da loja' }
+      - { entity: 'BankAccount', icon: 'money', label: 'Finanças' }
   entities:
     Product:
       class: App\Entity\Product    
@@ -73,7 +78,6 @@ easy_admin:
           - { property: 'agencia', label: 'Agência' }
           - { property: 'agenciaDv', label: 'Dígito validador da agência' }
           - { type: 'group', css_class: 'col-sm-6', label: 'Documentação' }
-          - { property: 'documentType', type: 'choice', type_options: { multiple: false, choices: { 'CPF': 'cpf', 'RG': 'rg', 'CNPJ' : 'cnpj' } }, label: 'Tipo de documento do titular da conta' }
-          - { property: 'documentNumber', label: 'RG|CPF|CNPJ do titular da conta' }
+          - { property: 'documentNumber', label: 'CPF|CNPJ do titular da conta' }
           - { property: 'legalName', label: 'Nome completo | Razão social' }
           - { property: 'type', type: 'choice', type_options: { multiple: false, choices: { 'Conta corrente': 'conta_corrente', 'Poupança': 'conta_poupanca', 'Conta corrente conjunta' : 'conta_corrente_conjunta', 'Conta poupança conjunta' : 'conta_poupanca_conjunta' } }, label: 'Tipo de conta bancária' }

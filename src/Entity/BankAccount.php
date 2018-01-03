@@ -55,11 +55,6 @@ class BankAccount
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $documentType;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $legalName;
 
     /**
@@ -110,11 +105,6 @@ class BankAccount
     public function getDocumentNumber()
     {
         return $this->documentNumber;
-    }
-
-    public function getDocumentType()
-    {
-        return $this->documentType;
     }
 
     public function getLegalName()
