@@ -6,7 +6,8 @@ easy_admin:
     menu:
       - { entity: 'User', icon: 'user-circle-o', label: 'Contas de Usuário' }
       - { entity: 'Product', icon: 'shopping-cart', label: 'Produtos da loja' }
-      - { entity: 'BankAccount', icon: 'money', label: 'Finanças' }
+      - { label: 'Finanças', icon: 'money' }
+      - { entity: 'BankAccount', icon: 'bank', label: 'Contas Bancárias' }
   entities:
     Product:
       class: App\Entity\Product    
